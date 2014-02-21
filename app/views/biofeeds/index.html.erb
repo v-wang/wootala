@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>User</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @biofeeds.each do |biofeed| %>
       <tr>
+        <td><%= image_tag biofeed.image.url(:medium) %></td>
         <td><%= biofeed.description %></td>
         <td><%= biofeed.user.email if biofeed.user %></td>
         <td><%= link_to 'Show', biofeed %></td>

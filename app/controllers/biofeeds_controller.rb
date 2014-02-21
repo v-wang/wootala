@@ -53,6 +53,6 @@ class BiofeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def biofeed_params
-      params.require(:biofeed).permit(:description)
+      params.require(:biofeed).permit(:description, :image)
     end
 end
