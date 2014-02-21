@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,14 +15,18 @@
     <% @biofeeds.each do |biofeed| %>
       <tr>
         <td><%= biofeed.description %></td>
+        <td><%= biofeed.user.email if biofeed.user %></td>
         <td><%= link_to 'Show', biofeed %></td>
+        <% if biofeed.user == current_user %>
         <td><%= link_to 'Edit', edit_biofeed_path(biofeed) %></td>
         <td><%= link_to 'Destroy', biofeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Biofeed', new_biofeed_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Biofeed', new_biofeed_path %>
+<% end %>

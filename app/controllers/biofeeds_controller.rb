@@ -1,6 +1,8 @@
 class BiofeedsController < ApplicationController
   before_action :set_biofeed, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @biofeeds = Biofeed.all
   end
@@ -9,14 +11,14 @@ class BiofeedsController < ApplicationController
   end
 
   def new
-    @biofeed = Biofeed.new
+    @biofeed = current_user.biofeeds.build
   end
 
   def edit
   end
 
   def create
-    @biofeed = Biofeed.new(biofeed_params)
+    @biofeed = current_user.biofeeds.build(biofeed_params)
 
       if @biofeed.save
         redirect_to @biofeed, notice: 'Biofeed was successfully created.'
@@ -41,7 +43,12 @@ class BiofeedsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_biofeed
-      @biofeed = Biofeed.find(params[:id])
+      @biofeed = Biofeed.find_by(id: params[:id])
+    end
+  
+    def correct_user
+      @biofeed = current_user.biofeeds.find_by(id: params[:id])
+      redirect_to biofeeds_path, notice: "Not authorized to edit this pin" if @biofeed.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
