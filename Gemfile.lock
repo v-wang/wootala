@@ -71,10 +71,11 @@ GEM
     multi_json (1.8.4)
     nokogiri (1.5.11)
     orm_adapter (0.5.0)
-    paperclip (3.5.4)
+    paperclip (3.0.4)
       activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+      cocaine (>= 0.0.2)
       mime-types
     pg (0.17.1)
     polyglot (0.3.3)
@@ -147,7 +148,7 @@ DEPENDENCIES
   devise (~> 3.1.0.rc2)
   jbuilder (~> 1.2)
   jquery-rails
-  paperclip (~> 3.0)
+  paperclip (~> 3.0.2)
   pg
   rails (= 4.0.0)
   rails_12factor
