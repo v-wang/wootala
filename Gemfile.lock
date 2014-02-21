@@ -76,6 +76,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-aws (1.6.8)
+      aws-sdk (>= 1.2.0)
+      paperclip (>= 2.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -148,6 +151,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   paperclip (~> 3.0)
+  paperclip-aws (~> 1.6.8)
   pg
   rails (= 4.0.0)
   rails_12factor
